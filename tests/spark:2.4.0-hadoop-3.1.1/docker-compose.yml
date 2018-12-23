@@ -1,0 +1,34 @@
+version: "3"
+
+services: 
+  node1:
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    container_name: node1
+  node2:
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    container_name: node2
+  node3:
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    container_name: node3
+  node4:
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    container_name: node4
+    ports: 
+      - "8080:8080"
+      - "8088:8088"
+      - "50070:50070"
+    depends_on: 
+      - node1
+      - node2
+      - node3
+    environment: 
+      - HADOOP_INITIATOR=true
+      - HDFS_NAMENODE=node4
+      - SPARK_DRIVER=node4
+      - HDFS_SECONDARY_NAMENODE=node3
+      - HDFS_DATANODES=node1,node2,node3
+      - YARN_RESOURCEMANAGER=node4
+      - YARN_WORKERS=node1,node2,node3
+      - HDFS_REPLICA=2
+      - SPARK_WORKERS=node1,node2,node3
+      - SPARK_WORKING_MEMORY=1g
