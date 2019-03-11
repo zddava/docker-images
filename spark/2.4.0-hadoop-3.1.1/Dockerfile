@@ -14,10 +14,11 @@ ENV SCALA_HOME /usr/local/bin/scala
 ENV PATH $PATH:$SCALA_HOME/bin
 
 # python
-RUN wget https://repo.anaconda.com/archive/Anaconda3-2018.12-Linux-x86_64.sh -O anaconda3.sh; \
-    bash anaconda3.sh -b -p /opt/anaconda3;
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh; \
+    bash miniconda3.sh -b -p /opt/miniconda3; \
+    rm -rf miniconda3.sh;
 
-ENV PATH $PATH:/opt/anaconda3/bin
+ENV PATH $PATH:/opt/miniconda3/bin
 
 # spark
 RUN wget http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz; \
