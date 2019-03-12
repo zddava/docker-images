@@ -2,16 +2,16 @@ version: "3"
 
 services: 
   node1:
-    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1-miniconda3
     container_name: node1
   node2:
-    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1-miniconda3
     container_name: node2
   node3:
-    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1-miniconda3
     container_name: node3
   node4:
-    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1
+    image: hub.hzwesoft.com/spark:2.4.0-hadoop-3.1.1-miniconda3
     container_name: node4
     ports: 
       - "8080:8080"
