@@ -11,7 +11,14 @@ RUN wget https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.tgz; \
     mv /usr/local/bin/scala-2.12.8/ /usr/local/bin/scala;
 
 ENV SCALA_HOME /usr/local/bin/scala
-ENV PATH=$PATH:$SCALA_HOME/bin
+ENV PATH $PATH:$SCALA_HOME/bin
+
+# python
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh; \
+    bash miniconda3.sh -b -p /opt/miniconda3; \
+    rm -rf miniconda3.sh;
+
+ENV PATH $PATH:/opt/miniconda3/bin
 
 # spark
 RUN wget http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz; \
@@ -21,6 +28,7 @@ RUN wget http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoo
 
 ENV SPARK_HOME /opt/spark
 ENV SPARK_CONF_DIR $SPARK_HOME/conf
+ENV PYSPARK_PYTHON python3
 
 # bootstrap script
 COPY spark-bootstrap.sh /etc/spark-bootstrap.sh
